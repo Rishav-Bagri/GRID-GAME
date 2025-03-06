@@ -14,7 +14,9 @@ export const Home = () => {
             <div className="absolute inset-0 bg-black/60 backdrop-blur-lg"></div>
             <div className="relative z-10 w-full px-40 py-10">
                 <HomeGameName  text={"Dungeon Escape"} />
-                <HomeButton text={"Start" } />
+                <HomeButton onClick={()=>{
+                    navigate("/game")
+                }} text={"Start" } />
                 <HomeButton onClick={()=>{
                     navigate("/level")
                 }} text={"Level"} />
