@@ -13,7 +13,6 @@ export const snakePos=(grid,snake,player)=>{
             let newRow = sr + dir[i][0];
             let newCol = sc + dir[i][1];
         
-            // Check if newRow and newCol are within the grid boundaries
             if (newRow >= 0 && newRow < grid.length && newCol >= 0 && newCol < grid[0].length) {
                 if (grid[newRow][newCol] === 't') {
                     ans.push([newRow, newCol]);
@@ -34,7 +33,6 @@ export const snakePos=(grid,snake,player)=>{
             return res;
         }
         let i=Math.floor(Math.random() * ans.length)
-        console.log(i+"      "+ans[i]);
         return ans[i]
     
 }

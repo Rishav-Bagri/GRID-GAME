@@ -1,7 +1,11 @@
 import { useState } from "react";
 import { snakePos } from "../algorithms/snakeMovement";
+import { checkCollision } from "../algorithms/death";
+import { useNavigate } from "react-router";
 
 export const Tile=({index,player,setPlayer,snake1,snake2,setSnake1,setSnake2})=>{
+    
+    
     const obstacleMatrix = [
         ['t', 't', 'o', 't', 't', 't', 't', 'o', 't', 't', 't', 't', 't', 'o', 't'],
         ['t', 't', 't', 'o', 't', 't', 'o', 't', 't', 't', 'o', 't', 't', 't', 't'],
@@ -24,17 +28,21 @@ export const Tile=({index,player,setPlayer,snake1,snake2,setSnake1,setSnake2})=>
         if(obstacleMatrix[Math.floor(index / 15)][index % 15]=='t')return "bg-gray-400"
         return "bg-yellow-800"
     }
-    return <div onClick={()=>{
+
+    const handleOnClick=()=>{
         let r=Math.floor(index / 15)
         let c=index % 15
         if(obstacleMatrix[r][c]=='t'&&Math.abs(r-player[0])+Math.abs(c-player[1])==1){
             setPlayer([r,c])
             setSnake1(snakePos(obstacleMatrix,snake1,player))
             setSnake2(snakePos(obstacleMatrix,snake2,player))
-            
+            checkCollision(player,snake1,navigate)
+            checkCollision(player,snake2,navigate)
             console.log(player)
         }
-    }} key={index} className={`w-10 h-10 border rounded relative border-gray-700 ${fn(index)}`}>
+    }
+    const navigate= useNavigate()
+    return <div onClick={handleOnClick} key={index} className={`w-10 h-10 border rounded relative border-gray-700 ${fn(index)}`}>
         {/* Snake 1 Image */}
         {Math.floor(index / 15) == snake1[0] && index % 15 == snake1[1] && (
             <img
