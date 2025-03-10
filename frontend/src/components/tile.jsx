@@ -2,7 +2,7 @@ import { useState } from "react";
 import { snakePos } from "../algorithms/snakeMovement";
 import { checkCollision } from "../algorithms/death";
 import { useNavigate } from "react-router";
-
+import Popup from "reactjs-popup";
 export const Tile=({index,player,setPlayer,snake1,snake2,setSnake1,setSnake2})=>{
     
     
@@ -36,8 +36,6 @@ export const Tile=({index,player,setPlayer,snake1,snake2,setSnake1,setSnake2})=>
             setPlayer([r,c])
             setSnake1(snakePos(obstacleMatrix,snake1,player))
             setSnake2(snakePos(obstacleMatrix,snake2,player))
-            checkCollision(player,snake1,navigate)
-            checkCollision(player,snake2,navigate)
             console.log(player)
         }
     }
@@ -46,28 +44,29 @@ export const Tile=({index,player,setPlayer,snake1,snake2,setSnake1,setSnake2})=>
         {/* Snake 1 Image */}
         {Math.floor(index / 15) == snake1[0] && index % 15 == snake1[1] && (
             <img
-                src="/snake-removebg-preview.png"
-                className="absolute top-0 left-0 w-full h-full object-cover"
-                alt="Snake"
+            src="/snake-removebg-preview.png"
+            className="absolute top-0 left-0 w-full h-full object-cover"
+            alt="Snake"
             />
         )}
 
         {/* Snake 2 Image */}
         {Math.floor(index / 15) == snake2[0] && index % 15 == snake2[1] && (
             <img
-                src="/snake-removebg-preview.png"
-                className="absolute top-0 left-0 w-full h-full object-cover"
-                alt="Snake"
+            src="/snake-removebg-preview.png"
+            className="absolute top-0 left-0 w-full h-full object-cover"
+            alt="Snake"
             />
         )}
         {/* Snake 2 Image */}
         {Math.floor(index / 15) == player[0] && index % 15 == player[1] && (
             <img
-                src="player.png"
-                className="absolute top-0 left-0 w-full h-full object-cover"
-                alt="Snake"
+            src="player.png"
+            className="absolute top-0 left-0 w-full h-full object-cover"
+            alt="Snake"
             />
         )}
+        
     </div>  
     
 }
