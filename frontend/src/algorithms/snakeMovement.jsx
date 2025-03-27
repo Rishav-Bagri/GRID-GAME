@@ -5,7 +5,6 @@ export const snakePos=(grid,snake,player)=>{
     const sc=snake[1]
 
     
-        console.log("hi");
         
         let dir=[[1,0],[-1,0],[0,1],[0,-1]]
         let ans=[]
@@ -16,7 +15,6 @@ export const snakePos=(grid,snake,player)=>{
             if (newRow >= 0 && newRow < grid.length && newCol >= 0 && newCol < grid[0].length) {
                 if (grid[newRow][newCol] === 't') {
                     ans.push([newRow, newCol]);
-                    console.log(`${newRow} | ${newCol}`);
                 }
             }
         }
