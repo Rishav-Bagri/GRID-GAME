@@ -3,31 +3,18 @@ import { snakePos } from "../algorithms/snakeMovement";
 import { checkCollision } from "../algorithms/death";
 import { useNavigate } from "react-router";
 import { lava } from "../algorithms/lava";
-export const Tile=({lavaArr,setLavaArr,index,player,setPlayer,snake1,snake2,setSnake1,setSnake2})=>{
+export const Tile=({obstacleMatrix,setObstacleMatrix,lavaArr,setLavaArr,index,player,setPlayer,snake1,snake2,setSnake1,setSnake2})=>{
     
     
-    const obstacleMatrix = [
-        ['t', 't', 'o', 't', 't', 't', 't', 'o', 't', 't', 't', 't', 't', 'o', 't'],
-        ['t', 't', 't', 'o', 't', 't', 'o', 't', 't', 't', 'o', 't', 't', 't', 't'],
-        ['o', 't', 't', 't', 't', 'o', 't', 't', 'o', 't', 't', 't', 't', 'o', 't'],
-        ['t', 'o', 't', 't', 'o', 't', 't', 't', 't', 't', 'o', 't', 'o', 't', 't'],
-        ['t', 't', 'o', 't', 't', 't', 'o', 't', 't', 't', 't', 't', 't', 't', 'o'],
-        ['t', 'o', 't', 't', 't', 't', 't', 'o', 't', 'o', 't', 't', 't', 'o', 't'],
-        ['t', 't', 't', 'o', 't', 't', 'o', 't', 't', 't', 'o', 't', 't', 't', 't'],
-        ['o', 't', 't', 't', 't', 'o', 't', 't', 'o', 't', 't', 't', 't', 'o', 't'],
-        ['t', 'o', 't', 't', 'o', 't', 't', 't', 't', 't', 'o', 't', 'o', 't', 't'],
-        ['t', 't', 'o', 't', 't', 't', 'o', 't', 't', 't', 't', 't', 't', 't', 'o'],
-        ['t', 'o', 't', 't', 't', 't', 't', 'o', 't', 'o', 't', 't', 't', 'o', 't'],
-        ['t', 't', 't', 'o', 't', 't', 'o', 't', 't', 't', 'o', 't', 't', 't', 't'],
-        ['o', 't', 't', 't', 't', 'o', 't', 't', 'o', 't', 't', 't', 't', 'o', 't'],
-        ['t', 'o', 't', 't', 'o', 't', 't', 't', 't', 't', 'o', 't', 'o', 't', 't'],
-        ['t', 't', 'o', 't', 't', 't', 'o', 't', 't', 't', 't', 't', 't', 't', 'o'],
-        ['t', 'o', 't', 't', 't', 't', 't', 't', 't', 'o', 't', 't', 't', 'o', 't'],
-    ];
-    const fn=(index)=>{
-        if(obstacleMatrix[Math.floor(index / 15)][index % 15]=='t')return "bg-gray-400"
-        return "bg-yellow-800"
-    }
+    
+    const fn = (index) => {
+        const row = Math.floor(index / 15);
+        if (obstacleMatrix[row][index % 15] === 't') {
+            return row === 0 ? "bg-gray-400 glow-effect" : "bg-gray-400"; 
+        }else if(obstacleMatrix[row][index % 15] === 'l')return "bg-red-700";
+        return "bg-yellow-800";
+    };
+    
     
 
     const handleOnClick = () => {
@@ -38,17 +25,14 @@ export const Tile=({lavaArr,setLavaArr,index,player,setPlayer,snake1,snake2,setS
             const newPlayer = [r, c];
             const newSnake1 = snakePos(obstacleMatrix, snake1, player);
             const newSnake2 = snakePos(obstacleMatrix, snake2, player);
-            const newLava = lava(lavaArr, obstacleMatrix, newPlayer, newSnake1, newSnake2);
+            const newLava = lava(lavaArr, obstacleMatrix,setObstacleMatrix, newPlayer, newSnake1, newSnake2);
 
             
             setPlayer(newPlayer);
             setSnake1(newSnake1);
             setSnake2(newSnake2);
-            console.log(newLava);
             
-            setLavaArr(newLava);
-    
-            
+            setLavaArr(newLava);    
         }
     };
     
@@ -79,12 +63,6 @@ export const Tile=({lavaArr,setLavaArr,index,player,setPlayer,snake1,snake2,setS
             alt="Snake"
             />
         )}
-
-        {
-            lavaArr.map((i) => (
-                i === index ? <div key={i} className="w-10 h-10 bg-red-700"></div> : null
-            ))
-        }   
     </div>  
     
 }

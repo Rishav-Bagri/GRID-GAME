@@ -12,6 +12,28 @@ export const Grid = ({ row, col }) => {
     const navigate = useNavigate();
     const [isCollision, setIsCollision] = useState(false);
 
+
+    const [obstacleMatrix,setObstacleMatrix] = useState([
+        ['t', 't', 'o', 't', 't', 't', 't', 'o', 't', 't', 't', 't', 't', 'o', 't'],
+        ['t', 't', 't', 'o', 't', 't', 'o', 't', 't', 't', 'o', 't', 't', 't', 't'],
+        ['o', 't', 't', 't', 't', 'o', 't', 't', 'o', 't', 't', 't', 't', 'o', 't'],
+        ['t', 'o', 't', 't', 'o', 't', 't', 't', 't', 't', 'o', 't', 'o', 't', 't'],
+        ['t', 't', 'o', 't', 't', 't', 'o', 't', 't', 't', 't', 't', 't', 't', 'o'],
+        ['t', 'o', 't', 't', 't', 't', 't', 'o', 't', 'o', 't', 't', 't', 'o', 't'],
+        ['t', 't', 't', 'o', 't', 't', 'o', 't', 't', 't', 'o', 't', 't', 't', 't'],
+        ['o', 't', 't', 't', 't', 'o', 't', 't', 'o', 't', 't', 't', 't', 'o', 't'],
+        ['t', 'o', 't', 't', 'o', 't', 't', 't', 't', 't', 'o', 't', 'o', 't', 't'],
+        ['t', 't', 'o', 't', 't', 't', 'o', 't', 't', 't', 't', 't', 't', 't', 'o'],
+        ['t', 'o', 't', 't', 't', 't', 't', 'o', 't', 'o', 't', 't', 't', 'o', 't'],
+        ['t', 't', 't', 'o', 't', 't', 'o', 't', 't', 't', 'o', 't', 't', 't', 't'],
+        ['o', 't', 't', 't', 't', 'o', 't', 't', 'o', 't', 't', 't', 't', 'o', 't'],
+        ['t', 'o', 't', 't', 'o', 't', 't', 't', 't', 't', 'o', 't', 'o', 't', 't'],
+        ['t', 't', 'o', 't', 't', 't', 'o', 't', 't', 't', 't', 't', 't', 't', 'o'],
+        ['t', 'o', 't', 't', 't', 't', 't', 't', 't', 'o', 't', 't', 't', 'o', 't'],
+    ]);
+
+
+
     useEffect(() => {
         if (checkCollision(player, snake1) || checkCollision(player, snake2)) {
             setIsCollision(true);
@@ -21,10 +43,10 @@ export const Grid = ({ row, col }) => {
     return (
         <div className="grid" style={{ display: "grid", gridTemplateColumns: `repeat(${col}, 1fr)`, gap: "0px" }}>
             {Array.from({ length: row * col }).map((_, index) => (
-                <Tile key={index} lavaArr={arr} setLavaArr={setArr} player={player} setPlayer={setPlayer} snake1={snake1} setSnake1={setSnake1} snake2={snake2} setSnake2={setSnake2} index={index} />
+                <Tile key={index} obstacleMatrix={obstacleMatrix} setObstacleMatrix={setObstacleMatrix} lavaArr={arr} setLavaArr={setArr} player={player} setPlayer={setPlayer} snake1={snake1} setSnake1={setSnake1} snake2={snake2} setSnake2={setSnake2} index={index} />
             ))}
-            {<GamePopup isCollision={isCollision} setIsCollision={setIsCollision} navigate={navigate} />}
-            
+            {isCollision&&<GamePopup isCollision={isCollision} setIsCollision={setIsCollision} navigate={navigate} />}
+            {player[0]==0 && <GamePopup isCollision={isCollision} setIsCollision={setIsCollision} navigate={navigate} />}
         </div>
     );
 };

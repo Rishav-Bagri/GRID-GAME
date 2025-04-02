@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router";
 import Popup from 'reactjs-popup';
 export const checkCollision = (player, snake,navigate) => {
-    const [pr, pc] = player; // Player's row and column
-    const [sr, sc] = snake; // Snake's row and column
+    const [pr, pc] = player;
+    const [sr, sc] = snake;
 
     
     const directions = [
