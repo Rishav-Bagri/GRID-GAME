@@ -27,7 +27,7 @@ export const HowToPlay = () => {
 
                     <h2 className="text-2xl font-semibold text-green-400">🐍 The Snake Enemy</h2>
                     <ul className="list-disc pl-4 space-y-1">
-                        <li>The snake moves <strong>randomly</strong> unless you are <strong>4 tiles away</strong>.</li>
+                        <li>The snake moves <strong>randomly</strong> unless you are <strong>few tiles away</strong>.</li>
                         <li>If you're close, it switches to <strong>greedy movement</strong>, chasing you aggressively.</li>
                         <li>Outsmart the snake by predicting its movement and using obstacles to block its path!</li>
                     </ul>
