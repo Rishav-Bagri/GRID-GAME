@@ -6,15 +6,15 @@
   --font-arvo: "Nosifer", sans-serif; 
 }
 @keyframes subtle-glow {
-  0% {
-      box-shadow: 0px 0px 4px rgba(0, 255, 150, 0.3);
-  }
-  100% {
-      box-shadow: 0px 0px 10px rgba(0, 255, 150, 0.7);
-  }
+    0% {
+        box-shadow: 0px 0px 4px rgba(254, 254, 254, 0.3);
+    }
+    100% {
+        box-shadow: 0px 0px 10px rgb(255, 255, 255);
+    }
 }
 
 .glow-effect {
-  animation: subtle-glow 1.5s infinite alternate;
-  border: 2px solid rgba(0, 255, 150, 0.8);
+    animation: subtle-glow 1.5s infinite alternate;
+    border: 2px solid rgb(255, 251, 3);
 }

@@ -5,7 +5,7 @@ export const lava = (arr, grid, setGrid, player, snake1, snake2) => {
     let ngrid = [...grid.map(row => [...row])]; // Deep copy of grid
     let r = 0, c = 0;
 
-    if (narr.length === 5) {
+    if (narr.length === 12) {
         let index = narr[0];
         let oldR = Math.floor(index / grid.length);
         let oldC = index % grid.length;
@@ -24,7 +24,7 @@ export const lava = (arr, grid, setGrid, player, snake1, snake2) => {
           manhattanDistance(snake1, [r, c]) > 1 && 
           manhattanDistance(snake2, [r, c]) > 1)
     );
-    
+
     ngrid[r][c] = 'l';  // Place new lava
     setGrid(ngrid);  
     narr.push(index);
