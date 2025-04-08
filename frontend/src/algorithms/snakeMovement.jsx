@@ -51,7 +51,6 @@ export const snakePos = (grid, snake, player) => {
         }
     }
 
-    // If player is far or no path found, pick a random move
     let validMoves = [];
     for (let [dr, dc] of directions) {
         let nr = sr + dr;
