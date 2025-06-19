@@ -32,9 +32,7 @@ export const Home = () => {
                     navigate("/how-to-play")
                 }} text={"How To Play"} />
                 <HomeButton text={"Credits"} />
-                <HomeButton onClick={()=>{
-                    navigate("/login")
-                }} text={"Login/Register"} />
+                
             </div>
         </div>
     );
