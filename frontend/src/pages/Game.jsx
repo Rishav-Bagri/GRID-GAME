@@ -11,7 +11,7 @@ export const Game = () => {
     const grid = useRecoilValue(gridAtom)
 
     useEffect(() => {
-        loadLevel(0)
+        loadLevel(9)//0 base indexing so lvl-1
     }, [])
 
     let row = 16;
