@@ -2,7 +2,7 @@ const Progress = require('../models/Progress');
 const jwt = require('jsonwebtoken');
 
 exports.saveProgress = async (req, res) => {
-  const { currentLevel, stepsTaken } = req.body;
+  const { __v } = req.body;
   const authHeader = req.headers.authorization;
 
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
@@ -17,7 +17,9 @@ exports.saveProgress = async (req, res) => {
 
     const progress = await Progress.findOneAndUpdate(
       { userId },
-      { currentLevel }    );
+      { __v },
+      { upsert: true, new: true }
+    );
     res.status(201).json({ message: "Progress saved", progress });
   } catch (err) {
     res.status(500).json({ error: err.message });

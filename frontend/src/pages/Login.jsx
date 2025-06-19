@@ -29,7 +29,9 @@ export const Login = () => {
         });
         if (resp.ok) {
             const data = await resp.json();
-            localStorage.setItem("unlockedLevel", data.unlockedLevel);
+            console.log(data);
+            
+            localStorage.setItem("unlockedLevel", data.__v);
         }
     };
 

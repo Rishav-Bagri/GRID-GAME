@@ -7,9 +7,22 @@ import { levelAtom } from "../atoms/atom";
 import { useEffect } from "react";
 export const GamePopup=({win,isCollision,setIsCollision,navigate})=>{
     const [level,setLevel]=useRecoilState(levelAtom) 
+    async function update() {
+        const token = localStorage.getItem("token");
+        const currentLevel = parseInt(localStorage.getItem("unlockedLevel")); // The level just unlocked
+        await fetch("http://localhost:5000/api/progress", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`,
+            },
+            body: JSON.stringify({ __v:parseInt(localStorage["unlockedLevel"]) }), // or add stepsTaken if needed
+        });
+    }
     useEffect(()=>{
         if(win && level==localStorage["unlockedLevel"]){
             localStorage["unlockedLevel"]=parseInt(localStorage["unlockedLevel"])+1
+            update()
         }
 
     },[])

@@ -10,14 +10,28 @@ export const Register = () => {
 
     const handleRegister = async (e) => {
         e.preventDefault();
-        console.log(username+password);
-        
-        const response=await fetch("http://localhost:5000/api/register", {
+        // 1. Register the user
+        const res = await fetch("http://localhost:5000/api/register", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ username, password }),
         });
-        localStorage["token"]=response.token
+
+        if (res.ok) {
+            // 2. Optionally get the token (if your backend returns it after registration)
+            const data = await res.json();
+            const token = data.token; // or fetch from localStorage, or skip if not needed
+
+            // 3. Initialize progress with a separate POST
+            await fetch("http://localhost:5000/api/progress", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    ...(token && { "Authorization": `Bearer ${token}` })
+                },
+                body: JSON.stringify({ unlockedLevel: 0 }), // or 1 if your game starts at level 1
+            });
+        }
     };
 
     return (
