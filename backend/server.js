@@ -45,7 +45,7 @@ const corsOptions = {
   origin: 'http://localhost:5173', // Frontend URL
   optionsSuccessStatus: 200
 };
-app.use(cors(corsOptions));
+app.use(cors());
 
 // Connect to MongoDB Atlas
 connectDB();

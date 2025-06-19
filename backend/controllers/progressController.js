@@ -17,9 +17,7 @@ exports.saveProgress = async (req, res) => {
 
     const progress = await Progress.findOneAndUpdate(
       { userId },
-      { currentLevel, stepsTaken },
-      { upsert: true, new: true }
-    );
+      { currentLevel }    );
     res.status(201).json({ message: "Progress saved", progress });
   } catch (err) {
     res.status(500).json({ error: err.message });

@@ -4,8 +4,7 @@ const ProgressSchema = new mongoose.Schema({
 
     userId: String,
 
-    currentLevel: Number,
-    stepsTaken: Number
+    currentLevel: Number
 });
 
 module.exports = mongoose.model('Progress', ProgressSchema);
