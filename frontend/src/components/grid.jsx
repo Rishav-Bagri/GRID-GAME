@@ -25,7 +25,6 @@ export const Grid = ({steps,setSteps, row, col }) => {
             setIsCollision(true);
         }
     }, [player, snake1, snake2]);
-    console.log(obstacleMatrix);
     
     return (
         <div className="grid" style={{ display: "grid", gridTemplateColumns: `repeat(${col}, 1fr)`, gap: "0px" }}>

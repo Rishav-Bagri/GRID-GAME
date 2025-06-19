@@ -19,9 +19,9 @@ export const levels = [
         ['t', 't', 'o', 't', 't', 't', 'o', 't', 't', 't', 't', 't', 't', 't', 'o'],
         ['t', 'o', 't', 't', 't', 't', 't', 't', 't', 'o', 't', 't', 't', 'o', 't'],
       ],
-      player: [15, 7],
+      player: [1, 13],
       snake1: [10, 10],
-      snake2: [7, 7],
+      snake2: [7, 4],
       lava: []
     },
     {

@@ -1,7 +1,11 @@
 
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
+import { useLoadLevel } from "../algorithms/loadLevel";
+import { useRecoilState } from "recoil";
+import { levelAtom } from "../atoms/atom";
 export const GamePopup=({win,isCollision,setIsCollision,navigate})=>{
+    const [level,setLevel]=useRecoilState(levelAtom) 
     return <Popup 
         open={1} 
         modal 
@@ -25,7 +29,12 @@ export const GamePopup=({win,isCollision,setIsCollision,navigate})=>{
             </button>
             {win==true && 
                 <button 
-                    onClick={() => navigate("/")} 
+                    onClick={() => {
+                        
+                        setLevel(level+1)
+                        navigate("/game")
+                        
+                    }} 
                     className="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded w-full"
                 >
                     Next
