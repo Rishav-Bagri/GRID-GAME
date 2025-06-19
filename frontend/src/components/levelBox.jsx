@@ -2,7 +2,7 @@ import { useState } from "react";
 
 export const LevelBox = ({ level, onClick }) => {
     const unlocked = localStorage["unlockedLevel"]|0;
-    const selectable = level <= unlocked;
+    const selectable = level <= unlocked+1;
     
     const [showMsg, setShowMsg] = useState(false);
 

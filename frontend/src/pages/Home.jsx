@@ -19,7 +19,7 @@ export const Home = () => {
                 }} text={"Start" } />
                 <HomeButton onClick={()=>{
                     navigate("/level")
-                }} text={"Level"} />
+                }} text={"Level ("+(parseInt(localStorage["currentLevel"])+1)+")"} />
                 <HomeButton onClick={()=>{
                     navigate("/how-to-play")
                 }} text={"How To Play"} />

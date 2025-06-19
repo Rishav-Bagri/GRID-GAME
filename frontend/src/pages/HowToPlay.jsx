@@ -36,12 +36,12 @@ export const HowToPlay = () => {
                     <p>Reach the last row to <strong>complete the stage</strong>. Survive, strategize, and escape the dungeon!</p>
                 </div>
 
-                <button 
+                <div 
                     onClick={() => navigate("/")}
                     className="mt-4 text-yellow-400 hover:text-yellow-300 text-xl font-semibold transition duration-300 cursor-pointer"
                 >
                     Back to Home
-                </button>
+                </div>
             </div>
         </Background>
     );
