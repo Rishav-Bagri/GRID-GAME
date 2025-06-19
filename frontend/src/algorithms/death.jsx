@@ -12,7 +12,6 @@ export const checkCollision = (player, snake,navigate) => {
 
     for (const [dr, dc] of directions) {
         if (pr === sr + dr && pc === sc + dc) {
-            console.log("hogya");
             
             return true;
         }
