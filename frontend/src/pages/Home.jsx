@@ -9,6 +9,14 @@ export const Home = () => {
     const onClick=(to)=>{
         navigate(to)
     }
+    if(!localStorage["currentLevel"]){
+        localStorage["currentLevel"]=0
+    }
+    if(!localStorage["unlockedLevel"]){
+        localStorage["unlockedLevel"]=0
+    }
+    
+
     return (
         <div className="relative min-h-screen bg-[url('/3d-fantasy-scene.jpg')] bg-cover bg-center">
             <div className="absolute inset-0 bg-black/60 backdrop-blur-lg"></div>
