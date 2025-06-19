@@ -4,8 +4,15 @@ import "reactjs-popup/dist/index.css";
 import { useLoadLevel } from "../algorithms/loadLevel";
 import { useRecoilState } from "recoil";
 import { levelAtom } from "../atoms/atom";
+import { useEffect } from "react";
 export const GamePopup=({win,isCollision,setIsCollision,navigate})=>{
     const [level,setLevel]=useRecoilState(levelAtom) 
+    useEffect(()=>{
+        if(win && level==localStorage["unlockedLevel"]){
+            localStorage["unlockedLevel"]=parseInt(localStorage["unlockedLevel"])+1
+        }
+
+    },[])
     return <Popup 
         open={1} 
         modal 
@@ -31,6 +38,7 @@ export const GamePopup=({win,isCollision,setIsCollision,navigate})=>{
                 <button 
                     onClick={() => {
                         
+                        localStorage["currentLevel"]=level+1
                         setLevel(level+1)
                         navigate("/game")
                         

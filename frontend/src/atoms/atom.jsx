@@ -27,6 +27,6 @@ export const gridAtom = atom({
   
   export const levelAtom = atom({
     key: "levelAtom",
-    default: 0
+    default: localStorage["currentLevel"]|0
   })
   
